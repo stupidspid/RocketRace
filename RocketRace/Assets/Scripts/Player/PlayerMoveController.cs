@@ -43,12 +43,18 @@ public class PlayerMoveController : MonoBehaviour
         var relativeUpSpeed = forwardMoveSpeed * Vector3.up;
         var relativeHorizontalSpeed = horizontalMoveSpeed * _horizontalMoveDirection * Vector3.right;
         var currentRelativeSpeed = relativeUpSpeed + relativeHorizontalSpeed;
-        rigidbody.velocity += currentRelativeSpeed * Time.deltaTime;
+        rigidbody.velocity = currentRelativeSpeed * Time.deltaTime;
     }
 
     private void Update()
     {
         Move();
+        UpdateGravity();
+    }
+
+    private void UpdateGravity()
+    {
+        rigidbody.useGravity = !_isMoving;
     }
 
 }

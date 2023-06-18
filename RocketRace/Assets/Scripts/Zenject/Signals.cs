@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class InputMoveSignal
 {
     public float horizontalInput;
@@ -15,5 +17,15 @@ public class InputFingerSignal
     public InputFingerSignal(bool isHolding)
     {
         this.isHolding = isHolding;
+    }
+}
+
+public class UpdateObstacleSignal
+{
+    public Transform transform;
+
+    public UpdateObstacleSignal(Transform transform)
+    {
+        this.transform = transform;
     }
 }

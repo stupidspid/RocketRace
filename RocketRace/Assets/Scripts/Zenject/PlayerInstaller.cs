@@ -7,6 +7,7 @@ namespace Zenject
             SignalBusInstaller.Install(Container);
             Container.DeclareSignal<InputMoveSignal>();
             Container.DeclareSignal<InputFingerSignal>();
+            Container.DeclareSignal<UpdateObstacleSignal>();
         }
     }
 }
