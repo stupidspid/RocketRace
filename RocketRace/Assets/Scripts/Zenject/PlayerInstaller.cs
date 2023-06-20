@@ -4,10 +4,10 @@ namespace Zenject
     {
         public override void InstallBindings()
         {
-            SignalBusInstaller.Install(Container);
             Container.DeclareSignal<InputMoveSignal>();
             Container.DeclareSignal<InputFingerSignal>();
             Container.DeclareSignal<UpdateObstacleSignal>();
+            Container.DeclareSignal<MovePlayerSignal>();
         }
     }
 }

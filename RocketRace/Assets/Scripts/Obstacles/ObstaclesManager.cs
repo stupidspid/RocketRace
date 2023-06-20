@@ -29,7 +29,6 @@ public class ObstaclesManager : MonoBehaviour
     private void OnEnable()
     {
         RandomizeFrequency();
-        print($"nnnnn {_currentFrequency}");
     }
 
     private void RandomizeFrequency()
@@ -50,21 +49,19 @@ public class ObstaclesManager : MonoBehaviour
             }
         }
         SetObstaclePosition(signal.transform);
+        ClearRandomize();
     }
 
     private void SetObstaclePosition(Transform obstacleTransform)
     {
-        obstacleTransform.localPosition = new Vector3(0, respawnYPosition, 0);
-        if (_obstacles.Count == sidesAmount)
-        {
-            _obstacles[_randomSide].localPosition = new Vector3(_randomXPosition, respawnYPosition, 0);
-            ClearRandomize();
-        }
+        var newXPosition = _obstacles.Count == sidesAmount ? _randomXPosition : 0;
+        obstacleTransform.localPosition = new Vector3(newXPosition, respawnYPosition, 0);
     }
 
 
     private void ClearRandomize()
     {
+        if (_obstacles.Count != sidesAmount) return;
         _obstacles.Clear();
         RandomizeFrequency();
         _obstaclesCounter = 0;
